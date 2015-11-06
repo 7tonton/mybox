@@ -18,17 +18,17 @@
     <title>File Upload Page</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="bootstrap/css/custom.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="js/ie-emulation-modes-warning.js"></script>
+    <script src="bootstrap/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -62,34 +62,13 @@
 
 <?php
 
-include 'fileapi.php';
-include 'userapi.php';
-include 'core.inc.php';
-
-function file_add_info($name, $size, $type) {
-	$user_id = $_SESSION['user_id'];
-	$result = mybox_users_get_by_id($user_id);
-	$result = $result[0]->user_username;
-	mybox_file_add($result, $name, $size, $type);
-}
+include 'APIfile.php';
 
 @$name = $_FILES['file']['name'];
 @$size = $_FILES['file']['size'];
 @$type = $_FILES['file']['type'];
-
 @$tmp_name = $_FILES['file']['tmp_name'];
 
-$target_loaction = 'uploads/';
-
-if(isset($name)) {
-	if(!empty($name)) {
-		move_uploaded_file($tmp_name, $target_loaction.$name);
-		echo 'File uploaded successfully.';
-		file_add_info($name, $size, $type);
-	} else {
-		echo 'Please choose a file.';
-	}
-}
-
+mybox_handel_uploaded_file($name, $size, $type, $tmp_name);
 
 ?>

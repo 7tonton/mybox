@@ -41,4 +41,27 @@ function mybox_get_filetype_by_filename($file_name) {
 	return $filetype;
 }
 
+function mybox_handel_uploaded_file($name, $size, $type, $tmp_name) {
+
+	include 'APIuser.php';
+	include 'core.inc.php';
+
+	$target_loaction = 'uploads/';
+
+	if(isset($name)) {
+		if(!empty($name)) {
+			move_uploaded_file($tmp_name, $target_loaction.$name);
+			echo 'File uploaded successfully.';
+			
+			$user_id = $_SESSION['user_id'];
+			$result = mybox_users_get_by_id($user_id);
+			$result = $result[0]->user_username;
+			mybox_file_add($result, $name, $size, $type);
+
+		} else {
+			echo 'Please choose a file.';
+		}
+	}
+}
+
 ?>

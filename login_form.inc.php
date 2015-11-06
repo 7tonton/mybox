@@ -13,17 +13,17 @@
     <title>Signin for tonton</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="signin.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/custom.css" rel="stylesheet">
+    <link href="bootstrap/css/custom.css" rel="stylesheet">
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="js/ie-emulation-modes-warning.js"></script>
+    <script src="bootstrap/js/ie-emulation-modes-warning.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -61,7 +61,7 @@
 
 <?php
 
-include_once('ipapi.php');
+include_once('APIip.php');
 
 mybox_ip_visitor_add($ip_address);
 
@@ -72,7 +72,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
 	if(!empty($username) && !empty($password)) {
 		
 		require('connect.inc.php');
-		require('userapi.php');
+		require('APIuser.php');
 
 		$result = mybox_users_get_by_username($username);
 		$result = $result[0];

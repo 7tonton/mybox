@@ -2,8 +2,8 @@
 
 require('core.inc.php');
 require('connect.inc.php');
-require('userapi.php');
-require('ipapi.php');
+require('APIuser.php');
+require('APIip.php');
 
 $get_result = mybox_users_get_by_id($_SESSION['user_id']);
 
