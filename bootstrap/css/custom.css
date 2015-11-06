@@ -1,0 +1,43 @@
+.form-signin {
+	max-width: 330px;
+	margin: 0 auto; 
+	padding: 15px;
+}
+
+body {
+	padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #eee;
+}
+
+.form-signin-heading {
+	margin-bottom: 10px;
+}
+
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.col {
+    margin-left: 415px; 
+    max-width: 310px;
+}
+
+#bar_blank {
+  border: solid 1px #000;
+  height: 20px;
+  width: 300px;
+}
+
+#bar_color {
+  background-color: #006666;
+  height: 20px;
+  width: 0px;
+}
+
+#bar_blank, #hidden_iframe {
+  display: none;
+}
