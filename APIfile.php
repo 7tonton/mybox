@@ -50,6 +50,7 @@ function mybox_handel_uploaded_file($name, $size, $type, $tmp_name) {
 
 	if(isset($name)) {
 		if(!empty($name)) {
+			
 			move_uploaded_file($tmp_name, $target_loaction.$name);
 			echo 'File uploaded successfully.';
 			

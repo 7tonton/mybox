@@ -63,12 +63,33 @@
 <?php
 
 include 'APIfile.php';
+include 'APIuser.php';
+include 'core.inc.php';
+
+function file_add_info($name, $size, $type) {
+	$user_id = $_SESSION['user_id'];
+	$result = mybox_users_get_by_id($user_id);
+	$result = $result[0]->user_username;
+	mybox_file_add($result, $name, $size, $type);
+}
 
 @$name = $_FILES['file']['name'];
 @$size = $_FILES['file']['size'];
 @$type = $_FILES['file']['type'];
+
 @$tmp_name = $_FILES['file']['tmp_name'];
 
-mybox_handel_uploaded_file($name, $size, $type, $tmp_name);
+$target_loaction = 'uploads/';
+
+if(isset($name)) {
+	if(!empty($name)) {
+		move_uploaded_file($tmp_name, $target_loaction.$name);
+		echo 'File uploaded successfully.';
+		file_add_info($name, $size, $type);
+	} else {
+		echo 'Please choose a file.';
+	}
+}
+
 
 ?>

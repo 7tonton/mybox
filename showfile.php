@@ -51,8 +51,8 @@
       </div>
     </nav>
 
-<div class="container">
-<div class="col-md-6" style="width: 1000px; margin-left: 269px;"> 
+<div class="container" style="margin-top: 130px;">
+<div > 
           <!--  table-striped -->
           <table class="table">
             <thead>
